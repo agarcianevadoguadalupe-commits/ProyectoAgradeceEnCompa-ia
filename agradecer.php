@@ -1,3 +1,30 @@
+<?php
+
+    require 'configdb.php';
+
+    function conectar(){
+        $conexion = new mysqli(SERVIDOR, USUARIO, PASSWORD, BBDD);
+        $conexion->set_charset("utf8"); 
+        return $conexion;
+    }
+
+    function mostrar_alumnos(){ 
+        $conexion=conectar();  
+        $sql='select nOrdenador, nombre from alumnos';
+        $resultado=$conexion->query($sql);
+
+        //Extrae cada una fila del resultado de la consulta
+        while($fila=$resultado->fetch_array()){
+        //Ejemplo que muestra un campo   
+            echo '<option value="'.$fila["nOrdenador"].'">'.$fila["nombre"].' - '.$fila["nOrdenador"].'</option>';
+        }
+        
+        return $resultado;
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,6 +33,11 @@
     <meta name="author" content="Abraham García Nevado">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
+    <style>
+        textarea {
+            resize: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,13 +68,7 @@
         <select id="para" name="para" required> 
             <?php
 
-                //Extrae cada una fila del resultado de la consulta
-                while($fila=$resultado->fetch_array()){
-                //Ejemplo que muestra un campo   
-                    echo '<option value=="'.$fila["idAlumno"].'">';
-                    echo $fila["nombre"].'-'.$fila["idAlumno"];
-                    echo '</option>';
-                }
+                mostrar_alumnos();
             
             ?>
         </select>
