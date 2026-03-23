@@ -1,5 +1,5 @@
 <?php
-    session_start();
+
     require 'configdb.php';
 
     function conectar(){
@@ -61,29 +61,16 @@
 
     <h2>Enviar Agradecimiento</h2>
 
-    <form action="agradecerVolver.php" method="post">
+    <?php
+        // Recoge los datos enviados por POST
+        $para = $_POST['para'] ?? '';      // Si no viene, será cadena vacía
+        $mensaje = $_POST['mensaje'] ?? '';
 
-        <label for="para">Para:</label><br>
-
-        <select id="para" name="para" required> 
-            <?php
-
-                mostrar_alumnos();
-            
-            ?>
-        </select>
-
-        <br><br>
-
-        <label for="mensaje">Quiero agradecerte:</label><br>
-
-        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-
-        <br><br>
-
-        <input type="submit" value="Enviar Agradecimiento">
-
-    </form>
+        // Lo mostramos de forma simple
+        echo $de = $_SESSION['usuario'];
+        echo "id: $para <br>";
+        echo "mensaje: $mensaje";
+    ?>
 
 </body>
 </html>
