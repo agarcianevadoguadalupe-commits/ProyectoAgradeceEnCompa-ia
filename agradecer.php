@@ -45,12 +45,12 @@
     <nav>
 
         <div class="logo">
-            <a href="inicio.html">Agradecer en Compañía</a>
+            <a href="inicio.php">Agradecer en Compañía</a>
         </div>
 
         <div class="menu">
-            <a href="#">Agradecer</a>
-            <a href="recibir.html">Recibir</a>
+            <a href="agradecer.php">Agradecer</a>
+            <a href="recibir.php">Recibir</a>
             <a href="index.html">Cerrar Sesión</a>
         </div>
 
@@ -65,7 +65,7 @@
 
         <label for="para">Para:</label><br>
 
-        <select id="para" name="para" required> 
+        <select id="para" name="para" class="select-principal" required size="1"> 
             <?php
 
                 mostrar_alumnos();
@@ -77,11 +77,11 @@
 
         <label for="mensaje">Quiero agradecerte:</label><br>
 
-        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-
+        <textarea id="mensaje" name="mensaje" class="textarea-principal" rows="5" required></textarea>
+    
         <br><br>
 
-        <input type="submit" value="Enviar Agradecimiento">
+        <input type="submit" value="Enviar" class="boton-enviar">
 
     </form>
 

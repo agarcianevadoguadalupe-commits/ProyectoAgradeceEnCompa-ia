@@ -1,5 +1,6 @@
 <?php
 
+    session_start();
     require 'configdb.php';
 
     function conectar(){
@@ -65,12 +66,17 @@
         // Recoge los datos enviados por POST
         $para = $_POST['para'] ?? '';      // Si no viene, será cadena vacía
         $mensaje = $_POST['mensaje'] ?? '';
-
-        // Lo mostramos de forma simple
-        echo $de = $_SESSION['usuario'];
-        echo "id: $para <br>";
-        echo "mensaje: $mensaje";
     ?>
+        <div class="resultado">
+    <?php
+        $nOrdenador = $_SESSION['nOrdenador'] ?? 'Desconocido';
+        echo "<p><strong>De:</strong> $nOrdenador</p>";
+        echo "<p><strong>Para:</strong> $para</p>";
+        echo "<p><strong>Mensaje:</strong><br>$mensaje</p>";
+    ?>
+    
+    <a href="agradecer.php" class="boton-volver">Volver</a>
+</div>
 
 </body>
 </html>
